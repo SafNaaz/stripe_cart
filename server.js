@@ -25,4 +25,14 @@ app.get('/store', (req,res)=>{
     })
 })
 
+app.post('/purchase', (req,res)=>{
+    fs.readFile('items.json',(err, data)=>{
+        if(err){
+            res.status(500).end()
+        }else{
+            console.log('purchase')
+        }
+    })
+})
+
 app.listen(3000)
