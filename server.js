@@ -18,6 +18,7 @@ app.get('/store', (req,res)=>{
             res.status(500).end()
         }else{
             res.render('store.ejs', {
+                stripePublicKey,
                 items : JSON.parse(data)
             })
         }
