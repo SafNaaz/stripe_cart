@@ -54,17 +54,22 @@ var stripeHandler = StripeCheckout.configure({
                 stripeTokenId : token.id,
                 items: items
             })
+        }).then((res)=>{
+            return res.json()
+        }).then((data)=>{
+            alert(data.message)
+            var cartItems = document.getElementsByClassName('cart-items')[0]
+            while (cartItems.hasChildNodes()) {
+                cartItems.removeChild(cartItems.firstChild)
+            }
+            updateCartTotal()
+        }).catch((err)=>{
+            console.error(err)
         })
     }
 })
 
 function purchaseClicked() {
-    // alert('Thank you for your purchase')
-    // var cartItems = document.getElementsByClassName('cart-items')[0]
-    // while (cartItems.hasChildNodes()) {
-    //     cartItems.removeChild(cartItems.firstChild)
-    // }
-    // updateCartTotal()
     var priceElement = document.getElementsByClassName('cart-total-price')[0]
     var price = parseFloat(priceElement.innerText.replace('$','')) * 100
     stripeHandler.open({
