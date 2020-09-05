@@ -1,5 +1,5 @@
-if(process.env.NODE_ENV !== 'production'){
-    require('dotenv').load()
+if (process.env.NODE_ENV !== 'production'){
+    require('dotenv').config()
 }
 
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY
